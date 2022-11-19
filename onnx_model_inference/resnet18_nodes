@@ -1,0 +1,1333 @@
+[
+input: "data"
+input: "resnetv22_batchnorm0_gamma"
+input: "resnetv22_batchnorm0_beta"
+input: "resnetv22_batchnorm0_running_mean"
+input: "resnetv22_batchnorm0_running_var"
+output: "resnetv22_batchnorm0_fwd"
+name: "resnetv22_batchnorm0_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, 
+input: "resnetv22_batchnorm0_fwd"
+input: "resnetv22_conv0_weight"
+output: "resnetv22_conv0_fwd"
+name: "resnetv22_conv0_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 7
+  ints: 7
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 3
+  ints: 3
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_conv0_fwd"
+input: "resnetv22_batchnorm1_gamma"
+input: "resnetv22_batchnorm1_beta"
+input: "resnetv22_batchnorm1_running_mean"
+input: "resnetv22_batchnorm1_running_var"
+output: "resnetv22_batchnorm1_fwd"
+name: "resnetv22_batchnorm1_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_batchnorm1_fwd"
+output: "resnetv22_relu0_fwd"
+name: "resnetv22_relu0_fwd"
+op_type: "Relu"
+, input: "resnetv22_relu0_fwd"
+output: "resnetv22_pool0_fwd"
+name: "resnetv22_pool0_fwd"
+op_type: "MaxPool"
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_pool0_fwd"
+input: "resnetv22_stage1_batchnorm0_gamma"
+input: "resnetv22_stage1_batchnorm0_beta"
+input: "resnetv22_stage1_batchnorm0_running_mean"
+input: "resnetv22_stage1_batchnorm0_running_var"
+output: "resnetv22_stage1_batchnorm0_fwd"
+name: "resnetv22_stage1_batchnorm0_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage1_batchnorm0_fwd"
+output: "resnetv22_stage1_activation0"
+name: "resnetv22_stage1_activation0"
+op_type: "Relu"
+, input: "resnetv22_stage1_activation0"
+input: "resnetv22_stage1_conv0_weight"
+output: "resnetv22_stage1_conv0_fwd"
+name: "resnetv22_stage1_conv0_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage1_conv0_fwd"
+input: "resnetv22_stage1_batchnorm1_gamma"
+input: "resnetv22_stage1_batchnorm1_beta"
+input: "resnetv22_stage1_batchnorm1_running_mean"
+input: "resnetv22_stage1_batchnorm1_running_var"
+output: "resnetv22_stage1_batchnorm1_fwd"
+name: "resnetv22_stage1_batchnorm1_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage1_batchnorm1_fwd"
+output: "resnetv22_stage1_activation1"
+name: "resnetv22_stage1_activation1"
+op_type: "Relu"
+, input: "resnetv22_stage1_activation1"
+input: "resnetv22_stage1_conv1_weight"
+output: "resnetv22_stage1_conv1_fwd"
+name: "resnetv22_stage1_conv1_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, 
+input: "resnetv22_stage1_conv1_fwd"
+input: "resnetv22_pool0_fwd"
+output: "resnetv22_stage1__plus0"
+name: "resnetv22_stage1__plus0"
+op_type: "Add"
+, 
+input: "resnetv22_stage1__plus0"
+input: "resnetv22_stage1_batchnorm2_gamma"
+input: "resnetv22_stage1_batchnorm2_beta"
+input: "resnetv22_stage1_batchnorm2_running_mean"
+input: "resnetv22_stage1_batchnorm2_running_var"
+output: "resnetv22_stage1_batchnorm2_fwd"
+name: "resnetv22_stage1_batchnorm2_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage1_batchnorm2_fwd"
+output: "resnetv22_stage1_activation2"
+name: "resnetv22_stage1_activation2"
+op_type: "Relu"
+, input: "resnetv22_stage1_activation2"
+input: "resnetv22_stage1_conv2_weight"
+output: "resnetv22_stage1_conv2_fwd"
+name: "resnetv22_stage1_conv2_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage1_conv2_fwd"
+input: "resnetv22_stage1_batchnorm3_gamma"
+input: "resnetv22_stage1_batchnorm3_beta"
+input: "resnetv22_stage1_batchnorm3_running_mean"
+input: "resnetv22_stage1_batchnorm3_running_var"
+output: "resnetv22_stage1_batchnorm3_fwd"
+name: "resnetv22_stage1_batchnorm3_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage1_batchnorm3_fwd"
+output: "resnetv22_stage1_activation3"
+name: "resnetv22_stage1_activation3"
+op_type: "Relu"
+, input: "resnetv22_stage1_activation3"
+input: "resnetv22_stage1_conv3_weight"
+output: "resnetv22_stage1_conv3_fwd"
+name: "resnetv22_stage1_conv3_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage1_conv3_fwd"
+input: "resnetv22_stage1__plus0"
+output: "resnetv22_stage1__plus1"
+name: "resnetv22_stage1__plus1"
+op_type: "Add"
+, input: "resnetv22_stage1__plus1"
+input: "resnetv22_stage2_batchnorm0_gamma"
+input: "resnetv22_stage2_batchnorm0_beta"
+input: "resnetv22_stage2_batchnorm0_running_mean"
+input: "resnetv22_stage2_batchnorm0_running_var"
+output: "resnetv22_stage2_batchnorm0_fwd"
+name: "resnetv22_stage2_batchnorm0_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage2_batchnorm0_fwd"
+output: "resnetv22_stage2_activation0"
+name: "resnetv22_stage2_activation0"
+op_type: "Relu"
+, input: "resnetv22_stage2_activation0"
+input: "resnetv22_stage2_conv0_weight"
+output: "resnetv22_stage2_conv0_fwd"
+name: "resnetv22_stage2_conv0_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage2_conv0_fwd"
+input: "resnetv22_stage2_batchnorm1_gamma"
+input: "resnetv22_stage2_batchnorm1_beta"
+input: "resnetv22_stage2_batchnorm1_running_mean"
+input: "resnetv22_stage2_batchnorm1_running_var"
+output: "resnetv22_stage2_batchnorm1_fwd"
+name: "resnetv22_stage2_batchnorm1_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage2_batchnorm1_fwd"
+output: "resnetv22_stage2_activation1"
+name: "resnetv22_stage2_activation1"
+op_type: "Relu"
+, input: "resnetv22_stage2_activation1"
+input: "resnetv22_stage2_conv1_weight"
+output: "resnetv22_stage2_conv1_fwd"
+name: "resnetv22_stage2_conv1_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage2_activation0"
+input: "resnetv22_stage2_conv2_weight"
+output: "resnetv22_stage2_conv2_fwd"
+name: "resnetv22_stage2_conv2_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 0
+  ints: 0
+  ints: 0
+  ints: 0
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage2_conv1_fwd"
+input: "resnetv22_stage2_conv2_fwd"
+output: "resnetv22_stage2__plus0"
+name: "resnetv22_stage2__plus0"
+op_type: "Add"
+, input: "resnetv22_stage2__plus0"
+input: "resnetv22_stage2_batchnorm2_gamma"
+input: "resnetv22_stage2_batchnorm2_beta"
+input: "resnetv22_stage2_batchnorm2_running_mean"
+input: "resnetv22_stage2_batchnorm2_running_var"
+output: "resnetv22_stage2_batchnorm2_fwd"
+name: "resnetv22_stage2_batchnorm2_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage2_batchnorm2_fwd"
+output: "resnetv22_stage2_activation2"
+name: "resnetv22_stage2_activation2"
+op_type: "Relu"
+, input: "resnetv22_stage2_activation2"
+input: "resnetv22_stage2_conv3_weight"
+output: "resnetv22_stage2_conv3_fwd"
+name: "resnetv22_stage2_conv3_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage2_conv3_fwd"
+input: "resnetv22_stage2_batchnorm3_gamma"
+input: "resnetv22_stage2_batchnorm3_beta"
+input: "resnetv22_stage2_batchnorm3_running_mean"
+input: "resnetv22_stage2_batchnorm3_running_var"
+output: "resnetv22_stage2_batchnorm3_fwd"
+name: "resnetv22_stage2_batchnorm3_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage2_batchnorm3_fwd"
+output: "resnetv22_stage2_activation3"
+name: "resnetv22_stage2_activation3"
+op_type: "Relu"
+, input: "resnetv22_stage2_activation3"
+input: "resnetv22_stage2_conv4_weight"
+output: "resnetv22_stage2_conv4_fwd"
+name: "resnetv22_stage2_conv4_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage2_conv4_fwd"
+input: "resnetv22_stage2__plus0"
+output: "resnetv22_stage2__plus1"
+name: "resnetv22_stage2__plus1"
+op_type: "Add"
+, input: "resnetv22_stage2__plus1"
+input: "resnetv22_stage3_batchnorm0_gamma"
+input: "resnetv22_stage3_batchnorm0_beta"
+input: "resnetv22_stage3_batchnorm0_running_mean"
+input: "resnetv22_stage3_batchnorm0_running_var"
+output: "resnetv22_stage3_batchnorm0_fwd"
+name: "resnetv22_stage3_batchnorm0_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage3_batchnorm0_fwd"
+output: "resnetv22_stage3_activation0"
+name: "resnetv22_stage3_activation0"
+op_type: "Relu"
+, input: "resnetv22_stage3_activation0"
+input: "resnetv22_stage3_conv0_weight"
+output: "resnetv22_stage3_conv0_fwd"
+name: "resnetv22_stage3_conv0_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage3_conv0_fwd"
+input: "resnetv22_stage3_batchnorm1_gamma"
+input: "resnetv22_stage3_batchnorm1_beta"
+input: "resnetv22_stage3_batchnorm1_running_mean"
+input: "resnetv22_stage3_batchnorm1_running_var"
+output: "resnetv22_stage3_batchnorm1_fwd"
+name: "resnetv22_stage3_batchnorm1_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage3_batchnorm1_fwd"
+output: "resnetv22_stage3_activation1"
+name: "resnetv22_stage3_activation1"
+op_type: "Relu"
+, input: "resnetv22_stage3_activation1"
+input: "resnetv22_stage3_conv1_weight"
+output: "resnetv22_stage3_conv1_fwd"
+name: "resnetv22_stage3_conv1_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage3_activation0"
+input: "resnetv22_stage3_conv2_weight"
+output: "resnetv22_stage3_conv2_fwd"
+name: "resnetv22_stage3_conv2_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 0
+  ints: 0
+  ints: 0
+  ints: 0
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage3_conv1_fwd"
+input: "resnetv22_stage3_conv2_fwd"
+output: "resnetv22_stage3__plus0"
+name: "resnetv22_stage3__plus0"
+op_type: "Add"
+, input: "resnetv22_stage3__plus0"
+input: "resnetv22_stage3_batchnorm2_gamma"
+input: "resnetv22_stage3_batchnorm2_beta"
+input: "resnetv22_stage3_batchnorm2_running_mean"
+input: "resnetv22_stage3_batchnorm2_running_var"
+output: "resnetv22_stage3_batchnorm2_fwd"
+name: "resnetv22_stage3_batchnorm2_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage3_batchnorm2_fwd"
+output: "resnetv22_stage3_activation2"
+name: "resnetv22_stage3_activation2"
+op_type: "Relu"
+, input: "resnetv22_stage3_activation2"
+input: "resnetv22_stage3_conv3_weight"
+output: "resnetv22_stage3_conv3_fwd"
+name: "resnetv22_stage3_conv3_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage3_conv3_fwd"
+input: "resnetv22_stage3_batchnorm3_gamma"
+input: "resnetv22_stage3_batchnorm3_beta"
+input: "resnetv22_stage3_batchnorm3_running_mean"
+input: "resnetv22_stage3_batchnorm3_running_var"
+output: "resnetv22_stage3_batchnorm3_fwd"
+name: "resnetv22_stage3_batchnorm3_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage3_batchnorm3_fwd"
+output: "resnetv22_stage3_activation3"
+name: "resnetv22_stage3_activation3"
+op_type: "Relu"
+, input: "resnetv22_stage3_activation3"
+input: "resnetv22_stage3_conv4_weight"
+output: "resnetv22_stage3_conv4_fwd"
+name: "resnetv22_stage3_conv4_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage3_conv4_fwd"
+input: "resnetv22_stage3__plus0"
+output: "resnetv22_stage3__plus1"
+name: "resnetv22_stage3__plus1"
+op_type: "Add"
+, input: "resnetv22_stage3__plus1"
+input: "resnetv22_stage4_batchnorm0_gamma"
+input: "resnetv22_stage4_batchnorm0_beta"
+input: "resnetv22_stage4_batchnorm0_running_mean"
+input: "resnetv22_stage4_batchnorm0_running_var"
+output: "resnetv22_stage4_batchnorm0_fwd"
+name: "resnetv22_stage4_batchnorm0_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage4_batchnorm0_fwd"
+output: "resnetv22_stage4_activation0"
+name: "resnetv22_stage4_activation0"
+op_type: "Relu"
+, input: "resnetv22_stage4_activation0"
+input: "resnetv22_stage4_conv0_weight"
+output: "resnetv22_stage4_conv0_fwd"
+name: "resnetv22_stage4_conv0_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage4_conv0_fwd"
+input: "resnetv22_stage4_batchnorm1_gamma"
+input: "resnetv22_stage4_batchnorm1_beta"
+input: "resnetv22_stage4_batchnorm1_running_mean"
+input: "resnetv22_stage4_batchnorm1_running_var"
+output: "resnetv22_stage4_batchnorm1_fwd"
+name: "resnetv22_stage4_batchnorm1_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage4_batchnorm1_fwd"
+output: "resnetv22_stage4_activation1"
+name: "resnetv22_stage4_activation1"
+op_type: "Relu"
+, input: "resnetv22_stage4_activation1"
+input: "resnetv22_stage4_conv1_weight"
+output: "resnetv22_stage4_conv1_fwd"
+name: "resnetv22_stage4_conv1_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage4_activation0"
+input: "resnetv22_stage4_conv2_weight"
+output: "resnetv22_stage4_conv2_fwd"
+name: "resnetv22_stage4_conv2_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 0
+  ints: 0
+  ints: 0
+  ints: 0
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 2
+  ints: 2
+  type: INTS
+}
+, input: "resnetv22_stage4_conv1_fwd"
+input: "resnetv22_stage4_conv2_fwd"
+output: "resnetv22_stage4__plus0"
+name: "resnetv22_stage4__plus0"
+op_type: "Add"
+, input: "resnetv22_stage4__plus0"
+input: "resnetv22_stage4_batchnorm2_gamma"
+input: "resnetv22_stage4_batchnorm2_beta"
+input: "resnetv22_stage4_batchnorm2_running_mean"
+input: "resnetv22_stage4_batchnorm2_running_var"
+output: "resnetv22_stage4_batchnorm2_fwd"
+name: "resnetv22_stage4_batchnorm2_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage4_batchnorm2_fwd"
+output: "resnetv22_stage4_activation2"
+name: "resnetv22_stage4_activation2"
+op_type: "Relu"
+, input: "resnetv22_stage4_activation2"
+input: "resnetv22_stage4_conv3_weight"
+output: "resnetv22_stage4_conv3_fwd"
+name: "resnetv22_stage4_conv3_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage4_conv3_fwd"
+input: "resnetv22_stage4_batchnorm3_gamma"
+input: "resnetv22_stage4_batchnorm3_beta"
+input: "resnetv22_stage4_batchnorm3_running_mean"
+input: "resnetv22_stage4_batchnorm3_running_var"
+output: "resnetv22_stage4_batchnorm3_fwd"
+name: "resnetv22_stage4_batchnorm3_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_stage4_batchnorm3_fwd"
+output: "resnetv22_stage4_activation3"
+name: "resnetv22_stage4_activation3"
+op_type: "Relu"
+, input: "resnetv22_stage4_activation3"
+input: "resnetv22_stage4_conv4_weight"
+output: "resnetv22_stage4_conv4_fwd"
+name: "resnetv22_stage4_conv4_fwd"
+op_type: "Conv"
+attribute {
+  name: "dilations"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "group"
+  i: 1
+  type: INT
+}
+attribute {
+  name: "kernel_shape"
+  ints: 3
+  ints: 3
+  type: INTS
+}
+attribute {
+  name: "pads"
+  ints: 1
+  ints: 1
+  ints: 1
+  ints: 1
+  type: INTS
+}
+attribute {
+  name: "strides"
+  ints: 1
+  ints: 1
+  type: INTS
+}
+, input: "resnetv22_stage4_conv4_fwd"
+input: "resnetv22_stage4__plus0"
+output: "resnetv22_stage4__plus1"
+name: "resnetv22_stage4__plus1"
+op_type: "Add"
+, input: "resnetv22_stage4__plus1"
+input: "resnetv22_batchnorm2_gamma"
+input: "resnetv22_batchnorm2_beta"
+input: "resnetv22_batchnorm2_running_mean"
+input: "resnetv22_batchnorm2_running_var"
+output: "resnetv22_batchnorm2_fwd"
+name: "resnetv22_batchnorm2_fwd"
+op_type: "BatchNormalization"
+attribute {
+  name: "epsilon"
+  f: 9.999999747378752e-06
+  type: FLOAT
+}
+attribute {
+  name: "momentum"
+  f: 0.8999999761581421
+  type: FLOAT
+}
+attribute {
+  name: "spatial"
+  i: 1
+  type: INT
+}
+, input: "resnetv22_batchnorm2_fwd"
+output: "resnetv22_relu1_fwd"
+name: "resnetv22_relu1_fwd"
+op_type: "Relu"
+, input: "resnetv22_relu1_fwd"
+output: "resnetv22_pool1_fwd"
+name: "resnetv22_pool1_fwd"
+op_type: "GlobalAveragePool"
+, input: "resnetv22_pool1_fwd"
+input: "reshape_attr_tensor164"
+output: "resnetv22_flatten0_reshape0"
+name: "resnetv22_flatten0_reshape0"
+op_type: "Reshape"
+, input: "resnetv22_flatten0_reshape0"
+input: "resnetv22_dense0_weight"
+input: "resnetv22_dense0_bias"
+output: "resnetv22_dense0_fwd"
+name: "resnetv22_dense0_fwd"
+op_type: "Gemm"
+attribute {
+  name: "alpha"
+  f: 1.0
+  type: FLOAT
+}
+attribute {
+  name: "beta"
+  f: 1.0
+  type: FLOAT
+}
+attribute {
+  name: "transA"
+  i: 0
+  type: INT
+}
+attribute {
+  name: "transB"
+  i: 1
+  type: INT
+}
+]
