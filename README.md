@@ -7,7 +7,7 @@
 
 ### ONNX Model List
 
-| 序号   | 模型      | ONNX 模型 |  ONNX runtime code       |  数据集 |
+| 序号   | 模型      | 模型 ONNX/PT/PB |  ONNX 转换       |  数据集 |
 | :----- |  :----   | :----     | :----                    | :----  |
 | 1  | resnet50     | [MLPerf resnet50 ONNX](https://github.com/mlcommons/inference) |  | [imagenet2012 homepage](https://www.image-net.org/challenges/LSVRC/2012/index.php), [imagenet2012 subset](https://www.kaggle.com/c/imagenet-object-localization-challenge/data) |
 | 2  | Bert-Large   | [MLPerf Bert-Large ONNX](https://github.com/mlcommons/inference/tree/r1.1/language/bert) | | [SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/)   |
@@ -27,18 +27,23 @@
 | 16 | ViT          | [ ]( ) |  |  |
 | 17 | resnet18     | [resnet18 ONNX](https://github.com/onnx/models/tree/main/vision/classification/resnet) |  |  |
 | 18 | resnet34     | [resnet34 ONNX](https://github.com/onnx/models/tree/main/vision/classification/resnet) |  |  |
+| 19 | resnet101    | [resnet101 pth](https://pytorch.org/hub/pytorch_vision_resnet/)                        | [code & onnx convert](./pytorch_model_convert/resnet101_resnext50/resnet101.py) | ImageNet1K | 
+| 27 | resnet101    | [resnet101 ONNX](https://github.com/onnx/models/tree/main/vision/classification/resnet) |  |  |
+| 20 | resNeXt      |[resnext pth](https://pytorch.org/hub/pytorch_vision_resnet/)                        | [code & onnx convert](./pytorch_model_convert/resnet101_resnext50/resnet101.py) | ImageNet1K | 
 | 19 | YOLO_v3_Tiny | [Yolov3-Tiny ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/tiny-yolov3) |  |  |
-| 20 | YOLO_v3      | [Yolov3 ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/yolov3) |  |  |
-| 21 | Inception_v2 | [Inception_v2](https://github.com/onnx/models) |  |  |
-| 22 | Inception_v3 | [Inception_v3](https://github.com/onnx/models) |  |  |
-| 23 | MobileNet_v2 | [ ]( ) |  |  |
-| 24 | MobileNet_v3 | [ ]( ) |  |  |
-| 25 | resnet101    | [resnet101 ONNX](https://github.com/onnx/models/tree/main/vision/classification/resnet) |  |  |
-| 26 | SSD          | [SSD ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/ssd) |  |  |
-| 27 |FasterRCNN-R50-FPN  |  [FasterRCNN ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/faster-rcnn) |  |  |
-| 28 | 3D-UNet      | [3D-UNet ONNX](https://github.com/mlcommons/inference) |  |  |
+| 21 | YOLO_v3      | [Yolov3 ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/yolov3) |  |  |
+| 22 | Inception_v2 | [Inception_v2](https://github.com/onnx/models) |  |  |
+| 23 | Inception_v3 | [Inception_v3](https://github.com/onnx/models) |  |  |
+| 24 | MobileNet    | [mobilenet_v1 tf](https://github.com/Zehaos/MobileNet)|
+| 25 | MobileNet_v2 | [ ]( ) |  |  |
+| 26 | MobileNet_v3 | [ ]( ) |  |  |
+| 27 | SSD_mobilenetv1 | [SSD_mb1 .pth](https://github.com/qfgaohao/pytorch-ssd) | [code & onnx convert](./pytorch_model_convert/ssd_mobilenetv1/vision/ssd/predictor.py)   | COCO2017 |
+| 28 | SSD          | [SSD ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/ssd) |  |  |
+| 29 |FasterRCNN-R50-FPN  |  [FasterRCNN ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/faster-rcnn) |  |  |
+| 30 | 3D-UNet      | [3D-UNet ONNX](https://github.com/mlcommons/inference) |  |  |
 
 
+------
 
 ### 模型分析 与 模型转换
 ------
