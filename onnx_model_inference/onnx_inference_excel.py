@@ -110,7 +110,10 @@ def onnx_shape_inference(model_path):
     # else:
     #     print('The model is valid!')
     file_prefix = ""
-    if len(value_info_list):
+    file_path, file_name = os.path.split(model_path)
+    file_prefix, file_ext = os.path.splitext(file_name)
+    print("\033[43m"+ "Porcessing Model: {}.".format(file_prefix) +"\033[0m")
+    if not len(value_info_list):
         # print("The model contains some shapes, do not apply shape_inference!")
         onnx_model = shape_inference.infer_shapes(onnx_model)
         # onnx.save(onnx_model, model_path+"_inferred.onnx")
@@ -118,8 +121,6 @@ def onnx_shape_inference(model_path):
         onnx.checker.check_model(onnx_model)
         value_info_list = onnx_model.graph.value_info
         # print('After shape inference, the shape info  is:\n{}'.format(value_info_list)) 
-        file_path, file_name = os.path.split(model_path)
-        file_prefix, file_ext = os.path.splitext(file_name)
         onnx.save(onnx_model, file_path + "/%s_shapeinference.onnx"%(file_prefix))
         print('Finish shape inference') 
 
@@ -308,6 +309,7 @@ def save_node(activation_shape_dict, model_name, nodes_in_out_dict=None, wt_dict
         # wt_dict = {'resnetv22_batchnorm0_gamma': (3, ), 'resnetv22_stage1_conv0_weight': (64, 64, 3, 3), ...}
         weight_name, weight_shape, input_shape, output_shape = "", "", "", ""
         op_type = in_out_dict["op_type"]
+        in_act, out_act = "", ""
 
         if op_type == "Conv":
             # activation/input is in position [0], others are weights
@@ -323,7 +325,8 @@ def save_node(activation_shape_dict, model_name, nodes_in_out_dict=None, wt_dict
                 else:
                     SEP_XLS = ", " if input_n > 1 else ""
                     weight_name = in_act
-                    weight_shape = ",".join(map(str, wt_dict[weight_name] ))
+                    if weight_name in wt_dict.keys():
+                        weight_shape = ",".join(map(str, wt_dict[weight_name] ))
 
             # write in Excel, only weight
             ws.cell(row=idx+1, column=1, value = idx)
@@ -366,16 +369,15 @@ def save_node(activation_shape_dict, model_name, nodes_in_out_dict=None, wt_dict
             if len(in_out_dict["input"]) > 1:
                 wt_name_list, wt_shape_list = [], []
                 for num, wt_name in enumerate(in_out_dict["input"]):
-                    if num > 0:
+                    if num > 0 and wt_name in wt_dict.keys():
                         wt_name_list.append(wt_name)
                         wt_shape_list.append(",".join(map(str, wt_dict[wt_name])))
                 # weight_name = in_out_dict["input"][1]
                 # weight_shape = ",".join(map(str, wt_dict[weight_name] ))
                 weight_name = ", ".join(wt_name_list)
                 weight_shape = ", ".join(wt_shape_list)
-
-            in_act = in_out_dict["input"][0]
-            out_act = in_out_dict["output"][0]
+            if len(in_out_dict["input"]): in_act = in_out_dict["input"][0]
+            if len(in_out_dict["output"]): out_act = in_out_dict["output"][0]
 
             if in_act in activation_shape_dict.keys():
                 input_shape = ",".join(map(str, activation_shape_dict[in_act]))
@@ -408,18 +410,16 @@ if __name__ == "__main__":
     model_path = "/public/ai_platform/model_coverage/resnet18_shapeinference.onnx"
     model_path = "/public/ai_platform/models/resnet18-v2-7.onnx_inferred.onnx"
     model_path = "D:/vbox/resnet18-v2-7_inferred.onnx"
-    tensor_dict, _, file_prefix, nodes_in_out_dict, wt_dict = onnx_shape_inference(model_path)
+    # tensor_dict, _, file_prefix, nodes_in_out_dict, wt_dict = onnx_shape_inference(model_path)
+    # save_node(tensor_dict, file_prefix, nodes_in_out_dict=nodes_in_out_dict, wt_dict=wt_dict)
     # onnx_tool_shape_inference(model_path)
 
-    # model_dir = "/public/ai_platform/model_coverage"
-    # for root, dirs, files in os.walk(model_dir):
-    #     for file in files:
-    #         file_path = os.path.join(root, file)
-    #         if file_path.endswith(".onnx"):
-    #             # onnx_shape_inference(file_path)
-    #             save_node(file_path)
+    model_dir = "/public/ai_platform/model_coverage"
+    for root, dirs, files in os.walk(model_dir):
+        for file in files:
+            file_path = os.path.join(root, file)
+            if file_path.endswith(".onnx"):
+                # onnx_shape_inference(file_path)
+                tensor_dict, _, file_prefix, nodes_in_out_dict, wt_dict = onnx_shape_inference(file_path)
+                save_node(tensor_dict, file_prefix, nodes_in_out_dict=nodes_in_out_dict, wt_dict=wt_dict)
     
-    model_path = "/public/ai_platform/model_coverage/resnet18_shapeinference.onnx"
-    model_path = "/public/ai_platform/models/resnet18-v2-7.onnx_inferred.onnx"
-    model_path = "D:/vbox/resnet18-v2-7_inferred.onnx"
-    save_node(tensor_dict, file_prefix, nodes_in_out_dict=nodes_in_out_dict, wt_dict=wt_dict)
