@@ -35,9 +35,9 @@
 | 22 | Inception_v2 | [Inception_v2](https://github.com/onnx/models) |  |  |
 | 23 | Inception_v3 | [Inception_v3](https://github.com/onnx/models) |  |  |
 | 24 | MobileNet    | [mobilenet_v1 tf](https://github.com/Zehaos/MobileNet)|
-| 25 | MobileNet_v2 | [ ]( ) |  |  |
+| 25 | MobileNet_v2 | [mobilenet_v2 pt](./pytorch_model_convert/mobilenetv2.pytorch/README.md) | [code & onnx convert](./pytorch_model_convert/mobilenetv2.pytorch/imagenet.py) |  |
 | 26 | MobileNet_v3 | [ ]( ) |  |  |
-| 27 | SSD_mobilenetv1 | [SSD_mb1 .pth](https://github.com/qfgaohao/pytorch-ssd) | [code & onnx convert](./pytorch_model_convert/ssd_mobilenetv1/vision/ssd/predictor.py)   | COCO2017 |
+| 27 | SSD_mobilenetv1 | [SSD_mb1 .pth](https://github.com/qfgaohao/pytorch-ssd) | [code & onnx convert (L26 enable)](./pytorch_model_convert/ssd_mobilenetv1/vision/ssd/predictor.py)   | COCO2017 |
 | 28 | SSD          | [SSD ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/ssd) |  |  |
 | 29 |FasterRCNN-R50-FPN  |  [FasterRCNN ONNX](https://github.com/onnx/models/tree/main/vision/object_detection_segmentation/faster-rcnn) |  |  |
 | 30 | 3D-UNet      | [3D-UNet ONNX](https://github.com/mlcommons/inference) |  |  |
