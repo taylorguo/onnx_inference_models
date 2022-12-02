@@ -50,7 +50,8 @@
 | 39   | FasterRCNN  | [pth](https://github.com/longcw/faster_rcnn_pytorch) |     |COCO2017|
 | 40   | FasterRCNN-R50| [mmdetection](https://github.com/open-mmlab/mmdetection/tree/master/configs/faster_rcnn) |     |VOC2007|
 | 41   | FasterRCNN  | [pth](https://github.com/longcw/faster_rcnn_pytorch) |     |COCO2017|
-| 42   | 3D-UNet            | [3D-UNet ONNX](https://github.com/mlcommons/inference)   |       |  |
+| 42   | SoloV2  | [pth](https://github.com/Epiphqny/SOLOv2) |     |COCO2017|
+| 43   | 3D-UNet            | [3D-UNet ONNX](https://github.com/mlcommons/inference)   |       |  |
 
 ---
 
