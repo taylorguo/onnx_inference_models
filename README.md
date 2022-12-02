@@ -51,7 +51,8 @@
 | 40   | FasterRCNN-R50| [mmdetection](https://github.com/open-mmlab/mmdetection/tree/master/configs/faster_rcnn) |     |VOC2007|
 | 41   | FasterRCNN  | [pth](https://github.com/longcw/faster_rcnn_pytorch) |     |COCO2017|
 | 42   | SoloV2  | [pth](https://github.com/Epiphqny/SOLOv2) |     |COCO2017|
-| 43   | 3D-UNet            | [3D-UNet ONNX](https://github.com/mlcommons/inference)   |       |  |
+| 43   | deeplabv3  | [pth](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/) | [code & onnx converter](./pytorch_model_convert/deeplabv3/deeplabv3.py) |COCO2017|
+| 44   | 3D-UNet            | [3D-UNet ONNX](https://github.com/mlcommons/inference)   |       |  |
 
 ---
 
