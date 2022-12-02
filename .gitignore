@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+pytorch_model_convert/retinanet/__pycache__
+pytorch_model_convert/deeplabv3/*.png
 
 # C extensions
 *.so
@@ -127,3 +129,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
