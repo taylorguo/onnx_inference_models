@@ -56,3 +56,5 @@ import matplotlib.pyplot as plt
 plt.imshow(r)
 # plt.show()
 
+torch.onnx.export(model, input_batch, "deeplabv3_pth.onnx", verbose=False,
+                  input_names=["input"], output_names=["output"]  )
