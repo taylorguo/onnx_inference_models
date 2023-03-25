@@ -1,0 +1,4 @@
+TensorFlowTTS==1.8
+protobuf==3.20.0
+numpy==1.23.0
+git+https://github.com/repodiac/german_transliterate.git#egg=german_transliterate # pip install 
