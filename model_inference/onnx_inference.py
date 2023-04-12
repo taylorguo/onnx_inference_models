@@ -163,7 +163,7 @@ if __name__ == "__main__":
     import sys
     # model_path = sys.argv[1]  
     model_path = "/public/ai_platform/model_compression/yolov5n.onnx"
-
+    model_path = "/home/gyf/models/tts-fastspeech2-baker-ch/fastspeech2_noloop_1x56.onnx"
     json_file = "build/resnet18-v2-7.onnx.json"
 
     # json_file = "../conv2_2.onnx.json"
