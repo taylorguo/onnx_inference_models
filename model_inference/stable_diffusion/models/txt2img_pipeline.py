@@ -29,7 +29,8 @@ class Txt2ImgPipeline(StableDiffusionPipeline):
     """
     def __init__(
         self,
-        scheduler="DDIM",
+        # scheduler="DDIM",
+        scheduler="PNDM",
         *args, **kwargs
     ):
         """

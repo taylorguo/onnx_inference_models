@@ -40,7 +40,7 @@ class StableDiffusionPipeline:
         denoising_steps=50,
         scheduler="DDIM",
         guidance_scale=7.5,
-        device= 'cpu', # 'cuda',
+        device= 'cuda',
         output_dir='.',
         hf_token=None,
         verbose=False,
@@ -449,14 +449,14 @@ class StableDiffusionPipeline:
             # noise_pred = self.runEngine('unet', {"sample": sample_inp, "timestep": timestep_inp, "encoder_hidden_states": embeddings_inp})['latent']
             timestep_inp = np.array([timestep_inp])
                        
-            noise_pred = self.runEngine('unet', {"sample": sample_inp, "timestep": timestep_inp, "encoder_hidden_states": embeddings_inp})
+            noise_pred = self.runEngine('unet', {"sample": sample_inp.astype(np.float32), "timestep": timestep_inp.astype(np.float32), "encoder_hidden_states": embeddings_inp.astype(np.float16)})
             
             if self.nvtx_profile:
                 nvtx.end_range(nvtx_unet)
 
             if self.nvtx_profile:
                 nvtx_latent_step = nvtx.start_range(message='latent_step', color='pink')
-            print(" *** No.{} : Finished UNET inference".format(step_index+1))
+            # print(" *** No.{} : Finished UNET inference".format(step_index+1))
             # Perform guidance
             # noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
             noise_pred_uncond, noise_pred_text = np.split(noise_pred[0], 2)
@@ -466,7 +466,7 @@ class StableDiffusionPipeline:
 
             if self.nvtx_profile:
                 nvtx.end_range(nvtx_latent_step)
-        print(" *** UNET inference result: \n", noise_pred)
+        print(" *** UNET inference result - latents: \n")
         del self.engine["unet"];
         latents = 1. / 0.18215 * latents
         # cudart.cudaEventRecord(self.events['denoise-stop'], 0)
@@ -489,12 +489,14 @@ class StableDiffusionPipeline:
             nvtx_vae = nvtx.start_range(message='vae', color='red')
         # cudart.cudaEventRecord(self.events['vae-start'], 0)
         # images = self.runEngine('vae', {"latent": device_view(latents)})['images']
-        print(" *** Start VAE inference")
-        images = self.runEngine('vae', {"latent": device_view(latents)})[0]
+        # print(" *** Start VAE inference  ", type(device_view(latents)), device_view(latents))
+        images = self.runEngine('vae', {"latent": device_view(latents).astype(np.float32)})[0]
         # cudart.cudaEventRecord(self.events['vae-stop'], 0)
         if self.nvtx_profile:
             nvtx.end_range(nvtx_vae)
-        print(" *** Finished VAE inference")
+        # print(" *** Finished VAE inference")
+        images = np.clip(images / 2 + 0.5, 0, 1)
+        images = images.transpose((0, 2, 3, 1))
         return images
 
     def print_summary(self, denoising_steps, tic, toc, vae_enc=False):
@@ -512,8 +514,10 @@ class StableDiffusionPipeline:
 
     def save_image(self, images, pipeline, prompt):
             # Save image
-            image_name_prefix = pipeline+'-fp16'+''.join(set(['-'+prompt[i].replace(' ','_')[:10] for i in range(len(prompt))]))+'-'
-            save_image_(images, self.output_dir, image_name_prefix)
+            # image_name_prefix = pipeline+'-fp16'+''.join(set(['-'+prompt[i].replace(' ','_')[:10] for i in range(len(prompt))]))+'-'
+            # save_image_(images, self.output_dir, image_name_prefix)
+            images = self.numpy_to_pil(images)
+            images[0].save("test.png")
     
     
     @staticmethod     

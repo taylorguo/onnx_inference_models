@@ -1202,7 +1202,7 @@ def add_arguments(parser):
     # Stable Diffusion configuration
     parser.add_argument('--version', type=str, default="2.1", choices=["1.4", "1.5", "2.0", "2.0-base", "2.1", "2.1-base"], help="Version of Stable Diffusion")
     parser.add_argument('prompt', nargs = '*', help="Text prompt(s) to guide image generation")
-    parser.add_argument('--negative-prompt', nargs = '*', default=[''], help="The negative prompt(s) to guide the image generation.")
+    parser.add_argument('--negative-prompt', nargs = '*', default=['blurry, low quality'], help="The negative prompt(s) to guide the image generation.")
     parser.add_argument('--repeat-prompt', type=int, default=1, choices=[1, 2, 4, 8, 16], help="Number of times to repeat the prompt (batch size multiplier)")
     parser.add_argument('--height', type=int, default=512, help="Height of image to generate (must be multiple of 8)")
     parser.add_argument('--width', type=int, default=512, help="Height of image to generate (must be multiple of 8)")

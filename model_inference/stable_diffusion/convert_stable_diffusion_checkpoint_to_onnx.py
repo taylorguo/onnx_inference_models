@@ -126,23 +126,23 @@ def convert_models(model_path: str, output_path: str, opset: int, fp16: bool = F
             "encoder_hidden_states": {0: "batch", 1: "sequence"},
         },
         opset=opset,
-        use_external_data_format=True,  # UNet is > 2GB, so the weights need to be split
+        # use_external_data_format=True,  # UNet is > 2GB, so the weights need to be split
     )
     unet_model_path = str(unet_path.absolute().as_posix())
     unet_dir = os.path.dirname(unet_model_path)
-    unet = onnx.load(unet_model_path)
-    # clean up existing tensor files
-    shutil.rmtree(unet_dir)
-    os.mkdir(unet_dir)
-    # collate external tensor files into one
-    onnx.save_model(
-        unet,
-        unet_model_path,
-        save_as_external_data=True,
-        all_tensors_to_one_file=True,
-        location="weights.pb",
-        convert_attribute=False,
-    )
+    # unet = onnx.load(unet_model_path)
+    # # clean up existing tensor files
+    # shutil.rmtree(unet_dir)
+    # os.mkdir(unet_dir)
+    # # collate external tensor files into one
+    # onnx.save_model(
+    #     unet,
+    #     unet_model_path,
+    #     save_as_external_data=True,
+    #     all_tensors_to_one_file=True,
+    #     location="weights.pb",
+    #     convert_attribute=False,
+    # )
     del pipeline.unet
 
     # VAE ENCODER
@@ -248,15 +248,17 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_path",
         type=str,
-        required=True,
+        # required=True,
         help="Path to the `diffusers` checkpoint to convert (either a local directory or on the Hub).",
     )
 
-    parser.add_argument("--output_path", type=str, required=True, help="Path to the output model.")
+    parser.add_argument("--output_path", type=str, 
+                        # required=True, 
+                        help="Path to the output model.")
 
     parser.add_argument(
         "--opset",
-        default=14,
+        default=17,
         type=int,
         help="The version of the ONNX operator set to use.",
     )
@@ -264,6 +266,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    args.model_path = "CompVis/stable-diffusion-v1-4"
-    args.output_path = "/home/gyf/github/inference_model_coverage/model_inference/stabel_diffusion/onnx"
+    # args.model_path = "stabilityai/stable-diffusion-2-1"
+    args.model_path = "runwayml/stable-diffusion-v1-5"
+    args.output_path = "onnx_15"
     convert_models(args.model_path, args.output_path, args.opset, args.fp16)

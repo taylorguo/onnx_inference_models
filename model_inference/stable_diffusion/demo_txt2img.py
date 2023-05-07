@@ -28,9 +28,11 @@ def parseArgs():
     return parser.parse_args()
 
 if __name__ == "__main__":
-    print("[I] Initializing StableDiffusion txt2img demo using TensorRT")
+    print("[I] Initializing StableDiffusion txt2img demo using ORT")
     args = parseArgs()
-
+    args.prompt = ["a dog on a lawn with the eifel tower in the background"]
+    args.negative_prompt = ["blurry, low quality"]
+    args.version = "1.5"
     # Process prompt
     if not isinstance(args.prompt, list):
         raise ValueError(f"`prompt` must be of type `str` or `str` list, but is {type(args.prompt)}")
